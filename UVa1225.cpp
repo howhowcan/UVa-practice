@@ -16,9 +16,9 @@ int main()
 		c = (num / 10) % 10;
 		d = num % 10;
 
-		if(a)
+		if(a)			//千位
 		{
-			for(int i = 1; i < a; i++)  //千位
+			for(int i = 1; i < a; i++)  
 			{
 				s[i] += 1000;
 			}
@@ -29,73 +29,51 @@ int main()
 
 		}
 
-		
-		if(b)
+
+		for(int i = 1; i <= 9; i++)  //百位
 		{
-			for(int i = 1; i <= 9; i++)  //百位
-			{
-				if(i < b)  s[i] = s[i] + (a+1) * 100;
-				else       s[i] = s[i] + a * 100;
-			}
+			if(i < b)  s[i] = s[i] + (a+1) * 100;
+			else       s[i] = s[i] + a * 100;
+		}
+		
+
+
+		if(b)
+		{	
 			s[b] = s[b] + (num % 100) + 1;
 			if(a != 0)  s[0] = s[0] + a * 100;
-
 		}
 		else
 		{
-			for(int i = 1; i <= 9; i++)  //百位
-			{
-				if(i < b)  s[i] = s[i] + (a+1) * 100;
-				else       s[i] = s[i] + a * 100;
-			}
 			if(a != 0)  s[0] = s[0] + (a-1) * 100 + (num % 100) + 1;
 		}
 
 
-		if(c)
+		for(int i = 1; i <= 9; i++)  //十位
 		{
-			for(int i = 1; i <= 9; i++)  //十位
-			{
-				if(i < c)  s[i] = s[i] + ((num/100)+1) * 10;
-				else       s[i] = s[i] + (num/100) * 10;
-			}
+			if(i < c)  s[i] = s[i] + ((num/100)+1) * 10;
+			else       s[i] = s[i] + (num/100) * 10;
+		}
+
+		if(c)
+		{			
 			s[c] = s[c] + (num % 10) + 1;
 			if(a || b)  s[0] = s[0] + (num/100) * 10;
-
 		}
 		else
 		{
-			for(int i = 1; i <= 9; i++)  //十位
-			{
-				if(i < c)  s[i] = s[i] + ((num/100)+1) * 10;
-				else       s[i] = s[i] + (num/100) * 10;
-			}
 			if(a || b)  s[0] = s[0] + ((num/100)-1) * 10 + (num % 10) + 1;
 		}
 		
 	
-
-		if(d)
+  		for(int i = 1; i <= 9; i++)  //個位
 		{
-			for(int i = 1; i <= 9; i++)  //個位
-			{
-				if(i <= d)  s[i] = s[i] + (num/10) + 1;
-				else       s[i] = s[i] + (num/10);
-			}
-
-			if(a || b || c)  s[0] = s[0] + (num/10);
-		}
-		else
-		{
-			for(int i = 1; i <= 9; i++)  //個位
-			{
-				if(i <= d)  s[i] = s[i] + (num/10) + 1;
-				else       s[i] = s[i] + (num/10);
-			}
-
-			if(a || b || c)  s[0] = s[0] + (num/10);
+			if(i <= d)  s[i] = s[i] + (num/10) + 1;
+			else       s[i] = s[i] + (num/10);
 		}
 
+		if(a || b || c)  s[0] = s[0] + (num/10);
+		
 		
 
 		for(int i = 0; i < 9; i++)
